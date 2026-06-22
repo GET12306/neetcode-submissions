@@ -1,0 +1,19 @@
+class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        self.res = []
+        self.back([], nums, [False] * len(nums))
+
+        return self.res
+
+    def back(self, perm, nums, pick):
+        if len(perm) == len(nums):
+            self.res.append(perm.copy())
+            return
+        
+        for i in range(len(nums)):
+            if not pick[i]:
+                perm.append(nums[i])
+                pick[i] = True
+                self.back(perm, nums, pick)
+                perm.pop()
+                pick[i] = False

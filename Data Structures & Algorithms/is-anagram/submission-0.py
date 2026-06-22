@@ -1,0 +1,19 @@
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        if len(s) != len(t):
+            return False
+
+        for i in s:
+            if i in t:
+                t = t.replace(i, '', 1)
+            else:
+                return False
+        
+        return True
+
+
+if __name__ == "__main__":
+    s = "racecar"
+    t = "carrace"
+    solution = Solution()
+    print(solution.isAnagram(s, t))
